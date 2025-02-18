@@ -14,6 +14,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
+import com.google.common.base.Strings;
 import com.inn.cafe.JWT.CustomerUsersDetailsService;
 import com.inn.cafe.JWT.JwtFilter;
 import com.inn.cafe.JWT.JwtUtil;
@@ -33,8 +34,10 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;
+
 	@Autowired
 	private AuthenticationManager authenticationManager;
+
 	@Autowired
 	private JwtUtil jwtUtil;
 	@Autowired
@@ -43,7 +46,7 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private JwtFilter jwtFilter;
 	@Autowired
-	private EmailUtils emailUtils; 
+	private EmailUtils emailUtils;
 
 	// signUp
 	@Override
@@ -161,7 +164,7 @@ public class UserServiceImpl implements UserService {
 		}
 		return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
+
 	// send Email To All Admin :
 	private void sendEmailToAllAdmin(String status, String user, List<String> allAdmin) {
 		allAdmin.remove(jwtFilter.getCurrentUser());
@@ -174,6 +177,53 @@ public class UserServiceImpl implements UserService {
 					"USER:- " + user + " \n is disabled by \nADMIN:-" + jwtFilter.getCurrentUser(), allAdmin);
 		}
 
+	}
+
+//	checkToken
+	@Override
+	public ResponseEntity<String> checkToken() {
+		return CafeUtils.getResponseEntity("true", HttpStatus.OK);
+	}
+
+//	changePassword
+	@Override
+	public ResponseEntity<String> changePassword(Map<String, String> requestMap) {
+		try {
+			User userObj = userDao.findByEmail(jwtFilter.getCurrentUser());
+			if (!userObj.equals(null)) {
+				if (userObj.getPassword().equals(requestMap.get("oldPassword"))) {
+					userObj.setPassword(requestMap.get("newPassword"));
+					userDao.save(userObj);
+					return CafeUtils.getResponseEntity("Password Updated succuffully", HttpStatus.OK);
+
+				}
+				return CafeUtils.getResponseEntity("Incorrect old Password", HttpStatus.BAD_REQUEST);
+
+			}
+			return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	
+//	forgotPassword
+	@Override
+	public ResponseEntity<String> forgotPassword(Map<String, String> requestMap) {
+		try {
+
+			User user = userDao.findByEmail(requestMap.get("email"));
+			if (!Objects.isNull(user) && !Strings.isNullOrEmpty(user.getEmail())) {
+				emailUtils.forgotMail(user.getEmail(), "credentizl by cafe ùanagement", user.getPassword());
+				return CafeUtils.getResponseEntity("Check your credentiels", HttpStatus.OK);
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 }

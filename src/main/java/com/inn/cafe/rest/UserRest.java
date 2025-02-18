@@ -19,11 +19,19 @@ public interface UserRest {
 
 	@PostMapping(path = "/login")
 	public ResponseEntity<String> login(@RequestBody(required = true) Map<String, String> requestMap);
-	
-	@GetMapping(path = "/get")
-	public ResponseEntity<List<UserWrapper>> getAllUser(); 
-	
-	@PostMapping(path = "/update")
-	public ResponseEntity<String> update(@RequestBody(required = true) Map<String, String> requestMap); 
 
+	@GetMapping(path = "/get")
+	public ResponseEntity<List<UserWrapper>> getAllUser();
+
+	@PostMapping(path = "/update")
+	public ResponseEntity<String> update(@RequestBody(required = true) Map<String, String> requestMap);
+
+	@GetMapping(path = "/checkToken")
+	public ResponseEntity<String> checkToken();
+
+	@PostMapping(path = "changePassword")
+	public ResponseEntity<String> changePassword(@RequestBody(required = true) Map<String, String> requestMap);
+
+	@PostMapping(path = "forgotPassword")
+	public ResponseEntity<String> forgotPassword(@RequestBody(required = true) Map<String, String> requestMap);
 }

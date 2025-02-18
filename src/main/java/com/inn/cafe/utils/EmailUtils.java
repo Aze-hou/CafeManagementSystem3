@@ -38,20 +38,20 @@ public class EmailUtils {
 		return cc;
 	}
 
-//	public void forgotMail(String to, String subject, String password) throws MessagingException {
-//
-//		MimeMessage message = emailSender.createMimeMessage();
-//		MimeMessageHelper helper = new MimeMessageHelper(message, true);
-//
-//		helper.setFrom("azeddine.houasli2018@gmail.com");
-//		helper.setTo(to);
-//		helper.setSubject(subject);
-//		String htmlMsg = "<p><b>Your Login details for Cafe Management System</b></br><b>Email : </b> " + to
-//				+ "<br><b>Password: </b> " + password
-//				+ "<br><a href=\"http://localhost:4200/\">Click here to login </a></p>";
-//		message.setContent(htmlMsg, "text/html");
-//		emailSender.send(message);
-//	}
+	public void forgotMail(String to, String subject, String password) throws MessagingException {
+
+		MimeMessage message = emailSender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+		helper.setFrom("azeddine.houasli2018@gmail.com");
+		helper.setTo(to);
+		helper.setSubject(subject);
+		String htmlMsg = "<p><b>Your Login details for Cafe Management System</b></br><b>Email : </b> " + to
+				+ "<br><b>Password: </b> " + password
+				+ "<br><a href=\"http://localhost:4200/\">Click here to login </a></p>";
+		message.setContent(htmlMsg, "text/html");
+		emailSender.send(message);
+	}
 
 //	send Set Password Reset
 //	public void sendSetPasswordReset(String email) throws MessagingException {

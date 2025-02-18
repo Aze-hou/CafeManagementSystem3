@@ -21,6 +21,11 @@ public class UserRestImpl implements UserRest {
 	@Autowired
 	private UserService userService;
 
+//	private UserService userService;
+//	public UserService setUserRestImpl(UserService userService) {
+//		return this.userService = userService;
+//	}
+
 	@Override
 	public ResponseEntity<String> signUp(Map<String, String> requestMap) {
 		try {
@@ -57,10 +62,40 @@ public class UserRestImpl implements UserRest {
 	@Override
 	public ResponseEntity<String> update(Map<String, String> requestMap) {
 		try {
-			return userService.update(requestMap); 
+			return userService.update(requestMap);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR); 
+		return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	@Override
+	public ResponseEntity<String> checkToken() {
+		try {
+			return userService.checkToken();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	@Override
+	public ResponseEntity<String> changePassword(Map<String, String> requestMap) {
+		try {
+			return userService.changePassword(requestMap);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	@Override
+	public ResponseEntity<String> forgotPassword(Map<String, String> requestMap) {
+		try {
+			return userService.forgotPassword(requestMap);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }
