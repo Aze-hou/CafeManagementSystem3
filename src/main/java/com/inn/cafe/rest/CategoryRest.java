@@ -24,8 +24,11 @@ public interface CategoryRest {
 	@PostMapping(path = "/update")
 	public ResponseEntity<String> updateCategory(@RequestBody(required = true) Map<String, String> requestMap);
 	
+	
 }
 
 
 
 //ààààà voiiiiiiiiiiiiiiir ::  @RequestParam @RequestBody  @PathParam @PathVariable
+
+// not not voir
