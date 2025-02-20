@@ -27,8 +27,3 @@ public interface CategoryRest {
 	
 }
 
-
-
-//ààààà voiiiiiiiiiiiiiiir ::  @RequestParam @RequestBody  @PathParam @PathVariable
-
-// not not voir
