@@ -11,3 +11,6 @@ public class CafeManagementSystem3Application {
 	}
 
 }
+
+
+//CafeManagementSystem3_Test
