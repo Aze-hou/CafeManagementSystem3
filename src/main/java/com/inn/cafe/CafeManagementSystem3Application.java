@@ -11,5 +11,3 @@ public class CafeManagementSystem3Application {
 	}
 
 }
-
-	// now we switched to a new other branch CafeManagementSystem3Branch

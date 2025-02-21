@@ -86,6 +86,7 @@ public class CategoryServiceImpl implements CategoryService {
 		return new ResponseEntity<List<Category>>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
+//	updateCategory
 	@Override
 	public ResponseEntity<String> updateCategory(Map<String, String> requestMap) {
 		try {

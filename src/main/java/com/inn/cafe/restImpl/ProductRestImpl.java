@@ -21,6 +21,7 @@ public class ProductRestImpl implements ProductRest {
 	@Autowired
 	private ProductService productService;
 
+//	addNewProduct
 	@Override
 	public ResponseEntity<String> addNewProduct(Map<String, String> requestMap) {
 		try {
@@ -31,6 +32,7 @@ public class ProductRestImpl implements ProductRest {
 		return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
+//	getAllProduct
 	@Override
 	public ResponseEntity<List<ProductWrapper>> getAllProduct() {
 		try {
@@ -41,6 +43,7 @@ public class ProductRestImpl implements ProductRest {
 		return new ResponseEntity<>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
+//	updateProduct
 	@Override
 	public ResponseEntity<String> updateProduct(Map<String, String> requestMap) {
 		try {
@@ -51,6 +54,7 @@ public class ProductRestImpl implements ProductRest {
 		return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
+//	deleteProduct
 	@Override
 	public ResponseEntity<String> deleteProduct(Integer id) {
 		try {
@@ -61,6 +65,7 @@ public class ProductRestImpl implements ProductRest {
 		return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
+//	updateStatus
 	@Override
 	public ResponseEntity<String> updateStatus(Map<String, String> requestMap) {
 		try {
@@ -71,6 +76,7 @@ public class ProductRestImpl implements ProductRest {
 		return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
+//	getProductByCategory
 	@Override
 	public ResponseEntity<List<ProductWrapper>> getProductByCategory(Integer id) {
 		try {
