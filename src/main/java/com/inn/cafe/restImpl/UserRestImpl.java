@@ -26,6 +26,7 @@ public class UserRestImpl implements UserRest {
 //		return this.userService = userService;
 //	}
 
+//	signUp
 	@Override
 	public ResponseEntity<String> signUp(Map<String, String> requestMap) {
 		try {
@@ -37,6 +38,7 @@ public class UserRestImpl implements UserRest {
 		return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
+//	login
 	@Override
 	public ResponseEntity<String> login(Map<String, String> requestMap) {
 		try {
@@ -48,6 +50,7 @@ public class UserRestImpl implements UserRest {
 		return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
+//	getAllUser
 	@Override
 	public ResponseEntity<List<UserWrapper>> getAllUser() {
 		try {
@@ -59,6 +62,7 @@ public class UserRestImpl implements UserRest {
 		return new ResponseEntity<List<UserWrapper>>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
+//	update
 	@Override
 	public ResponseEntity<String> update(Map<String, String> requestMap) {
 		try {
@@ -69,6 +73,7 @@ public class UserRestImpl implements UserRest {
 		return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
+//	checkToken
 	@Override
 	public ResponseEntity<String> checkToken() {
 		try {
@@ -79,6 +84,7 @@ public class UserRestImpl implements UserRest {
 		return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
+//	changePassword
 	@Override
 	public ResponseEntity<String> changePassword(Map<String, String> requestMap) {
 		try {
@@ -89,6 +95,7 @@ public class UserRestImpl implements UserRest {
 		return CafeUtils.getResponseEntity(CafeConstant.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
+//	forgotPassword
 	@Override
 	public ResponseEntity<String> forgotPassword(Map<String, String> requestMap) {
 		try {

@@ -21,6 +21,7 @@ public class CategoryRestImpl implements CategoryRest {
 	@Autowired
 	private CategoryService categoryService;
 
+//	addNewCategory
 	@Override
 	public ResponseEntity<String> addNewCategory(Map<String, String> requestMap) {
 
@@ -43,6 +44,7 @@ public class CategoryRestImpl implements CategoryRest {
 		return new ResponseEntity<>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
+//	updateCategory
 	@Override
 	public ResponseEntity<String> updateCategory(Map<String, String> requestMap) {
 		try {
